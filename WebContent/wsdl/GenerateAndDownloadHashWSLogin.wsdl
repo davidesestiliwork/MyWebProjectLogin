@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ws.mywebproject.dsestili.it" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://ws.mywebproject.dsestili.it" xmlns:intf="http://ws.mywebproject.dsestili.it" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://ws.mywebproject.dsestili.it" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="generateAndDownloadHashLogin">
+    <complexType>
+     <sequence>
+      <element name="folder" type="xsd:string"/>
+      <element name="algorithm" type="xsd:string"/>
+      <element name="modeParam" type="xsd:string"/>
+      <element name="userName" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="generateAndDownloadHashLoginResponse">
+    <complexType>
+     <sequence>
+      <element name="generateAndDownloadHashLoginReturn" type="impl:Result"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="FileInfo">
+    <sequence>
+     <element name="fileName" nillable="true" type="xsd:string"/>
+     <element name="hashCode" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOfFileInfo">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:FileInfo"/>
+    </sequence>
+   </complexType>
+   <complexType name="Result">
+    <sequence>
+     <element name="result" nillable="true" type="impl:ArrayOfFileInfo"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="generateAndDownloadHashLoginResponse">
+
+      <wsdl:part element="impl:generateAndDownloadHashLoginResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="generateAndDownloadHashLoginRequest">
+
+      <wsdl:part element="impl:generateAndDownloadHashLogin" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="GenerateAndDownloadHashWSLogin">
+
+      <wsdl:operation name="generateAndDownloadHashLogin">
+
+         <wsdl:input message="impl:generateAndDownloadHashLoginRequest" name="generateAndDownloadHashLoginRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:generateAndDownloadHashLoginResponse" name="generateAndDownloadHashLoginResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="GenerateAndDownloadHashWSLoginSoapBinding" type="impl:GenerateAndDownloadHashWSLogin">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="generateAndDownloadHashLogin">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="generateAndDownloadHashLoginRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="generateAndDownloadHashLoginResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="GenerateAndDownloadHashWSLoginService">
+
+      <wsdl:port binding="impl:GenerateAndDownloadHashWSLoginSoapBinding" name="GenerateAndDownloadHashWSLogin">
+
+         <wsdlsoap:address location="http://localhost:8080/MyWebProjectLogin/services/GenerateAndDownloadHashWSLogin"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
